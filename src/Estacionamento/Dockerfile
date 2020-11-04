@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1903 AS build
 WORKDIR /src
-COPY ["Una.Usabilidade.CRUD/Una.Usabilidade.CRUD.csproj", "Una.Usabilidade.CRUD/"]
-RUN dotnet restore "Una.Usabilidade.CRUD/Una.Usabilidade.CRUD.csproj"
+COPY ["Una.Usabilidade.CRUD/Estacionamento.csproj", "Estacionamento/"]
+RUN dotnet restore "Una.Usabilidade.CRUD/Estacionamento.csproj"
 COPY . .
 WORKDIR "/src/Una.Usabilidade.CRUD"
-RUN dotnet build "Una.Usabilidade.CRUD.csproj" -c Release -o /app/build
+RUN dotnet build "Estacionamento.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Una.Usabilidade.CRUD.csproj" -c Release -o /app/publish
+RUN dotnet publish "Estacionamento.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Una.Usabilidade.CRUD.dll"]
+ENTRYPOINT ["dotnet", "Estacionamento.dll"]

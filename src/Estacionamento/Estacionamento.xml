@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Estacionamento</name>
+    </assembly>
+    <members>
+        <member name="M:Estacionamento.Controllers.VeiculoController.#ctor(FluentMediator.IMediator,Estacionamento.Domain.Repositores.IMongoRepository{Estacionamento.Domain.Entities.Veiculo})">
+            <summary>
+            Controller responsável por rotas relacionadas a leiaute.
+            </summary>
+            <param name="mediator">Interface de mediator para chamar os use case da aplicação.</param>
+            <param name="repository">Interface de repositorio para chamar funcionalidades da aplicação.</param>
+        </member>
+        <member name="M:Estacionamento.Controllers.VeiculoController.PostVeiculo(Estacionamento.Application.ViewModel.VeiculoModel,Estacionamento.Presenter.VeiculoPresenter)">
+            <summary>
+            Cadastra Veiculos
+            </summary>
+            <param name="veiculo">Veiculos.</param>
+            <param name="presenter">Presenter de retorno.</param>
+            <returns>Retorna resultado da operação.</returns>
+        </member>
+        <member name="M:Estacionamento.Controllers.VeiculoController.GetTudo">
+            <summary>
+            Lista Veiculos Cadastrados
+            </summary>
+            <returns>Rertorna lista de leiautes.</returns>
+        </member>
+        <member name="P:Estacionamento.Models.ErrorModel.Erros">
+            <summary>
+            Erros das notificações.
+            </summary>
+        </member>
+        <member name="M:Estacionamento.Models.ErrorModel.#ctor(System.String)">
+            <summary>
+            Construtor
+            </summary>
+            <param name="erro">Nome do erro.</param>
+        </member>
+        <member name="M:Estacionamento.Models.ErrorModel.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Define lista de erros.
+            </summary>
+            <param name="erros">Lista de todos erros.</param>
+        </member>
+        <member name="M:Estacionamento.Models.ErrorModel.#ctor(System.Collections.Generic.IReadOnlyCollection{Flunt.Notifications.Notification})">
+            <summary>
+            Passa notificações dos erros.
+            </summary>
+            <param name="notifications">Notificações</param>
+        </member>
+        <member name="M:Estacionamento.Modules.FluentMediatorExtensions.AddMediator(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Metodo chamado no startup para registrar o Mediator
+            </summary>
+            <param name="services">Serviço de Mediator</param>
+            <returns></returns>
+        </member>
+        <member name="M:Estacionamento.Modules.PresenterExtensions.AddPresenters(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Metodo chamado no startup para registrar os Presenter
+            </summary>
+            <param name="services">Serviço de Presenter</param>
+            <returns></returns>
+        </member>
+        <member name="M:Estacionamento.Modules.UseCaseExtensions.AddUseCases(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Metodo chamado no startup para registrar os UseCase
+            </summary>
+            <param name="services">Serviço de UseCase</param>
+            <returns></returns>
+        </member>
+        <member name="P:Estacionamento.Presenter.VeiculoPresenter.ViewModel">
+            <summary>
+            O resultado viewmodel da rota.
+            </summary>
+            <returns>IActionResult</returns>
+        </member>
+        <member name="M:Estacionamento.Presenter.VeiculoPresenter.NotFound(System.String)">
+            <summary>
+            Produz o resultado 404 notfound.
+            </summary>
+            <param name="message">Output da rota.</param>
+        </member>
+        <member name="M:Estacionamento.Presenter.VeiculoPresenter.Success(Estacionamento.Application.Interfaces.Boundaries.Veiculos.VeiculoOutput)">
+            <summary>
+            Produz o resultado de sucesso do endpoint.
+            </summary>
+            <param name="output">Output da rota.</param>
+        </member>
+        <member name="M:Estacionamento.Presenter.VeiculoPresenter.WriteError(System.String)">
+            <summary>
+            Produz o resultado bad request 400, de forma amigável
+            </summary>
+            <param name="message">Output da rota.</param>
+        </member>
+        <member name="M:Estacionamento.Presenter.VeiculoPresenter.WriteError(System.Collections.Generic.IReadOnlyCollection{Flunt.Notifications.Notification})">
+            <summary>
+            Produz o resultado bad request 400, de forma amigável
+            </summary>
+            <param name="errors">Coleção de erros de validação de dados.</param>
+        </member>
+    </members>
+</doc>

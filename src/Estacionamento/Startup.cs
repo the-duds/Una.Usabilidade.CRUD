@@ -1,17 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using Estacionamento.Domain.Dto.Config;
+using Estacionamento.Infra.IoC;
+using Estacionamento.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
-namespace Una.Usabilidade.CRUD
+namespace Estacionamento
 {
     public class Startup
     {
@@ -25,7 +22,23 @@ namespace Una.Usabilidade.CRUD
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
+
+            services.AddControllers().AddNewtonsoftJson();
+
+            services.AddUseCases();
+
+            services.RegisterRepositories();
+
+            services.AddPresenters();
+
+            services.ConfiguraSwagger();
+
+            services.AddMediator();
+
+            services.AddSettingsConfig(Configuration);
+
+            services.AddAutoMapper(DependencyResolver.GetCurrentAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +50,8 @@ namespace Una.Usabilidade.CRUD
             }
 
             app.UseHttpsRedirection();
+
+            app.UsaSwaggerUi();
 
             app.UseRouting();
 
