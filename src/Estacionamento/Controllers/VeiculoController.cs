@@ -33,7 +33,7 @@ namespace Estacionamento.Controllers
 
 
         /// <summary>
-        /// Cadastra Veiculos
+        /// Cadastra Veículos
         /// </summary>
         /// <param name="veiculo">Veiculos.</param>
         /// <param name="presenter">Presenter de retorno.</param>
@@ -52,18 +52,46 @@ namespace Estacionamento.Controllers
         /// <summary>
         /// Lista Veiculos Cadastrados
         /// </summary>
-        /// <returns>Rertorna lista de leiautes.</returns>
+        /// <returns>Rertorna lista de veículos.</returns>
         [HttpGet, Route("All")]
         [ProducesResponseType(typeof(VeiculoOutput), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetTudo(/*[FromServices] VeiculoPresenter presenter*/)
+        public async Task<IActionResult> GetTudo()
         {
-            //await _mediator.PublishAsync(null).ConfigureAwait(false);
 
             return Ok(await _repository.GetAll());
 
-            //return presenter.ViewModel;
+        }
+
+        /// <summary>
+        /// Buscar Veiculo por Id.
+        /// </summary>
+        /// <returns>Rertorna veículo no banco.</returns>
+        [HttpGet, Route("{id}")]
+        [ProducesResponseType(typeof(VeiculoOutput), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetId(string id)
+        {
+
+            return Ok(await _repository.FindByIdAsync(id));
+
+        }
+
+        /// <summary>
+        /// Buscar Veiculo por Id.
+        /// </summary>
+        /// <returns>Rertorna veículo no banco.</returns>
+        [HttpDelete, Route("{id}")]
+        [ProducesResponseType(typeof(VeiculoOutput), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await _repository.DeleteByIdAsync(id);
+            return NoContent();
+
         }
 
     }

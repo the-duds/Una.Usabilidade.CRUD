@@ -37,7 +37,7 @@ namespace Estacionamento.Application.Services.Veiculos
 
                 await _repository.InsertOneAsync(carro);
 
-                _outputPort.Success(new VeiculoOutput("Leiaute cadastrado com Sucesso!"));
+                _outputPort.Success(new VeiculoOutput($"Veiculo cadastrado com Sucesso!{carro.Id}"));
                 return;
             }
             _outputPort.WriteError(input.Notifications);

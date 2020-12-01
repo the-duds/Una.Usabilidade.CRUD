@@ -24,6 +24,8 @@ namespace Estacionamento
         {
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
 
+            services.AddSettingsConfig(Configuration);
+
             services.AddControllers().AddNewtonsoftJson();
 
             services.AddUseCases();

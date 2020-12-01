@@ -13,7 +13,7 @@
         </member>
         <member name="M:Estacionamento.Controllers.VeiculoController.PostVeiculo(Estacionamento.Application.ViewModel.VeiculoModel,Estacionamento.Presenter.VeiculoPresenter)">
             <summary>
-            Cadastra Veiculos
+            Cadastra Veículos
             </summary>
             <param name="veiculo">Veiculos.</param>
             <param name="presenter">Presenter de retorno.</param>
@@ -23,7 +23,19 @@
             <summary>
             Lista Veiculos Cadastrados
             </summary>
-            <returns>Rertorna lista de leiautes.</returns>
+            <returns>Rertorna lista de veículos.</returns>
+        </member>
+        <member name="M:Estacionamento.Controllers.VeiculoController.GetId(System.String)">
+            <summary>
+            Buscar Veiculo por Id.
+            </summary>
+            <returns>Rertorna veículo no banco.</returns>
+        </member>
+        <member name="M:Estacionamento.Controllers.VeiculoController.Delete(System.String)">
+            <summary>
+            Buscar Veiculo por Id.
+            </summary>
+            <returns>Rertorna veículo no banco.</returns>
         </member>
         <member name="P:Estacionamento.Models.ErrorModel.Erros">
             <summary>

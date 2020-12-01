@@ -15,14 +15,11 @@ namespace Estacionamento.Infra.IoC
         public static void AddSettingsConfig(this IServiceCollection services, IConfiguration Configuration)
         {
             services.AddSingleton<IMongoDbSettings>(serviceProvider => serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
-
         }
 
         public static void RegisterRepositories(this IServiceCollection services)
         {
             services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
-         
-
         }
 
         public static IEnumerable<Assembly> GetCurrentAssemblies()
